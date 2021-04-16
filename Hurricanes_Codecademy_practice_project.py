@@ -95,11 +95,89 @@ def greatest_num_deaths(dictionary):
 
 
 # write your catgeorize by mortality function here:
+def categorize_by_mortality(dictionary):
+    mortality_scale= {0:0, 1:100, 2:500, 3:1000, 4:10000}
+    mortality_dictionary= {1:"", 2:"", 3:"", 4:"", 5:""}
+    for x in dictionary.values():
+        deaths= x['Deaths']
+        if deaths <= mortality_scale[0]:
+            try:
+                mortality_dictionary[1] += [x]
+            except:
+                mortality_dictionary[1] = [x]
+        elif deaths <= mortality_scale[1]:
+            try:
+                mortality_dictionary[2] += [x]
+            except:
+                mortality_dictionary[2] = [x]
+        elif deaths <= mortality_scale[2]:
+            try:
+                mortality_dictionary[3] += [x]
+            except:
+                mortality_dictionary[3] = [x]
+        elif deaths <= mortality_scale[3]:
+            try:
+                mortality_dictionary[4] += [x]
+            except:
+                mortality_dictionary[4] = [x]
+        elif deaths <= mortality_scale[4]:
+            try:
+                mortality_dictionary[5] += [x]
+            except:
+                mortality_dictionary[5] = [x]
+    return mortality_dictionary
 
 
 
 # write your greatest damage function here:
+def greatest_damage(dictionary):
+    greatest_damage= {}
+    dam= 0
+    for x in dictionary.values():
+        damage= x["Damage"]
+        try:
+            if float(damage) > dam:
+                damage = dam
+                greatest_damage["Most Damage"]= x["Name"], x["Damage"]
+            else:
+                pass
+        except:
+            if damage == "Damages not recorded":
+                pass
+    return greatest_damage
 
 
 
 # write your catgeorize by damage function here:
+def categorize_by_damage(dictionary):
+    damage_scale= {0:0, 1:100000000, 2:1000000000, 3:10000000000, 4:50000000000}
+    damage_dictionary= {1:"", 2:"", 3:"", 4:"", 5:""}
+    for x in dictionary.values():
+        damage = x['Damage']
+        if damage == "Damages not recorded":
+            try:
+                damage_dictionary[1] += [x]
+            except:
+                damage_dictionary[1] = [x]
+        elif float(damage) <= damage_scale[1]:
+            try:
+                damage_dictionary[2] += [x]
+            except:
+                damage_dictionary[2] = [x]
+        elif float(damage) <= damage_scale[2]:
+            try:
+                damage_dictionary[3] += [x]
+            except:
+                damage_dictionary[3] = [x]
+        elif float(damage) <= damage_scale[3]:
+            try:
+                damage_dictionary[4] += [x]
+            except:
+                damage_dictionary[4] = [x]
+        elif float(damage) <= damage_scale[4]:
+            try:
+                damage_dictionary[5] += [x]
+            except:
+                damage_dictionary[5] = [x]
+    return damage_dictionary
+        
