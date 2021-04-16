@@ -39,10 +39,10 @@ def update_damages(a_list):
 
 
 # write your construct hurricane dictionary function here:
-def create_dictionary(name, months, years, winds, areas, deaths):
+def create_dictionary(name, months, years, winds, areas, damage, deaths):
     hurricane_dictionary= {}
     for i in range(len(name)):
-        hurricane_dictionary[name[i]]= {"Name": name[i], "Months": months[i], "Years": years[i], "Max Sustained Winds": winds[i], "Areas Affected": areas[i], "Deaths": deaths[i]}
+        hurricane_dictionary[name[i]]= {"Name": name[i], "Months": months[i], "Years": years[i], "Max Sustained Winds": winds[i], "Areas Affected": areas[i], "Damages": damages[i], "Deaths": deaths[i]}
     return hurricane_dictionary
 
 
@@ -180,4 +180,3 @@ def categorize_by_damage(dictionary):
             except:
                 damage_dictionary[5] = [x]
     return damage_dictionary
-        
