@@ -42,7 +42,7 @@ def update_damages(a_list):
 def create_dictionary(name, months, years, winds, areas, damage, deaths):
     hurricane_dictionary= {}
     for i in range(len(name)):
-        hurricane_dictionary[name[i]]= {"Name": name[i], "Months": months[i], "Years": years[i], "Max Sustained Winds": winds[i], "Areas Affected": areas[i], "Damages": damages[i], "Deaths": deaths[i]}
+        hurricane_dictionary[name[i]]= {"Name": name[i], "Months": months[i], "Years": years[i], "Max Sustained Winds": winds[i], "Areas Affected": areas[i],"Damages": damages[i], "Deaths": deaths[i]}
     return hurricane_dictionary
 
 
@@ -180,3 +180,21 @@ def categorize_by_damage(dictionary):
             except:
                 damage_dictionary[5] = [x]
     return damage_dictionary
+
+#EXTRA
+
+#Change Damage to Scientific Notaiton
+multiplier= {"B":1000000000, "M":1000000}
+def update_damages_to_scientific_notation(a_list):
+    new_damages= []
+    for i in range(len(a_list)):
+        item= a_list[i]
+        if not(item[-1] == "B" or item[-1] == "M"):
+            new_damages.append(item)
+        elif item[-1] == "B":
+            new_num= float(item[:-1])* multiplier["B"]
+            new_damages += ["{:.2e}".format(new_num)]
+        elif item[-1] == "M":
+            new_num= float(item[:-1])* multiplier["M"]
+            new_damages += ["{:.2e}".format(new_num)]
+    return new_damages
